@@ -14,7 +14,7 @@ engine = create_engine('sqlite:///guns.sqlite')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-""" # Define a many-to-many relationship table between guns and users
+# Define a many-to-many relationship table between guns and users
 gun_user = Table(
     'guns_users',
     Base.metadata,
@@ -22,7 +22,7 @@ gun_user = Table(
     Column('user_id', ForeignKey('users.id'), primary_key=True),
     extend_existing=True,
 )
- """
+
 
 # Define the Gun class with attributes and relationships
 class Gun(Base):
@@ -39,8 +39,8 @@ class Gun(Base):
     # and using it in conjunction with delete-orphan indicates that the child object should follow along with its parent in all cases, and be deleted once it is no longer associated with that parent.
     reviews = relationship('Review', back_populates='gun', cascade='all, delete-orphan')
     
-    """ #to customers
-    users = relationship('User', secondary= gun_user, back_populates='guns') """
+    #to customers
+    users = relationship('User', secondary= gun_user, back_populates='guns')
     
 
 
@@ -58,9 +58,9 @@ class User(Base):
     # and using it in conjunction with delete-orphan indicates that the child object should follow along with its parent in all cases, and be deleted once it is no longer associated with that parent.
     reviews = relationship('Review', back_populates='user', cascade='all, delete-orphan')
     
-    """  
+     
     #to guns
-    guns = relationship('Restaurant', secondary= gun_user, back_populates='users') """
+    guns = relationship('Restaurant', secondary= gun_user, back_populates='users') 
     
     
 # Define the Review class with attributes and relationships
