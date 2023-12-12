@@ -60,7 +60,7 @@ class User(Base):
     
      
     #to guns
-    guns = relationship('Restaurant', secondary= gun_user, back_populates='users') 
+    guns = relationship('Gun', secondary= gun_user, back_populates='users') 
     
     
 # Define the Review class with attributes and relationships
