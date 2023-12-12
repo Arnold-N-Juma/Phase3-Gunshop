@@ -1,5 +1,7 @@
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Text, Integer, String, ForeignKey
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.sql import func
 
 engine=create_engine('sqlite:///guns.db',  echo=True)
 
@@ -7,8 +9,8 @@ Base=declarative_base()
 
 class Review(Base):
     __tablename__="reviews"
-    id=column(Integer(),primary_key=True)
-    review=column(string())
+    id=Column(Integer(),primary_key=True)
+    review_text=Column(String())
     user_id = Column(Integer, ForeignKey("users.id"))
     gun_id = Column(Integer(), ForeignKey("guns.id"))
     
@@ -20,17 +22,17 @@ class Review(Base):
 
 class User(Base):
     __tablename__="users"
-    id=column(Integer(),primary_key=True)
-    first_name=column(String())
-    last_name=column(String())
+    id=Column(Integer(),primary_key=True)
+    first_name=Column(String())
+    last_name=Column(String())
     
     reviews = relationship("Review", back_populates='users')
 
 class Gun(Base):
     __tablename__="guns"
-    id=column(Integer(),primary_key=True)
-    gun_name=column(String())
-    gun_price=column(String())
-    gun_info=column(String())
+    id=Column(Integer(),primary_key=True)
+    gun_name=Column(String())
+    gun_price=Column(String())
+    gun_info=Column(String())
    
     reviews=relationship("Review", back_populates="guns")
