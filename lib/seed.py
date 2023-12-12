@@ -15,16 +15,17 @@ print("GUN SECTION DETAILS")
 
 def seed_users_and_reviews():
     for _ in range(4):
-        user_instance = User(
+        user_details = User(
             first_name=fake.first_name(),
             last_name=fake.last_name(),
         )
-        session.add(user_instance)
-
+        session.add(user_details)
+        
+        
+    for user in session.query(User).all():
         for i in range(4):
             review = Review(
-                review_text=fake.text(),
-                user=user_instance
+                review_text=fake.text()
             )
             session.add(review)
 
@@ -32,7 +33,7 @@ def seed_guns():
     for _ in range(4):
         gun_instance = Gun(
             gun_name=fake.word(),
-            gun_price=fake.random_int(min=100, max=1000),
+            gun_price=fake.random_int(min=100, max=10000),
             gun_info=fake.sentence()
         )
         session.add(gun_instance)

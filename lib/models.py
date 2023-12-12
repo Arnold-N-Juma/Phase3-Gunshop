@@ -32,7 +32,7 @@ class Gun(Base):
     __tablename__="guns"
     id=Column(Integer(),primary_key=True)
     gun_name=Column(String())
-    gun_price=Column(String())
+    gun_price=Column(Integer())
     gun_info=Column(String())
    
     reviews=relationship("Review", back_populates="guns")
