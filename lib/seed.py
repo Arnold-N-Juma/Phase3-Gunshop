@@ -102,7 +102,7 @@ if __name__ == '__main__':
         # add and commit individually to get IDs back
         session.add(user)
         session.commit()
-        #append the customer to our customers list
+        #append the user to our users list
         users.append(user)
         
     #create reviews
