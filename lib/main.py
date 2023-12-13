@@ -9,4 +9,4 @@ def add_user(first_name,last_name):
     )
     #save it to the database
     session.add(new_user)
-    session.commit()
+    session.commit() 

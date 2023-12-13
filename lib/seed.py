@@ -32,7 +32,7 @@ if __name__ == '__main__':
     "Doomsday Devastator",
     "Mystic Guardian",
     "Nebula Blaster",
-    "Phantom Ghost"
+    "Phantom Ghost" 
 ]
     gun_infos = [
     "Assault Rifle",
