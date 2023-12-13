@@ -76,4 +76,6 @@ class Review(Base):
     #relationships
     gun = relationship ('Gun', back_populates= 'reviews' )
     user = relationship ('User', back_populates= 'reviews')
-   
+
+    # Create the tables in the database
+Base.metadata.create_all(engine)
