@@ -3,14 +3,17 @@ from models import *
 
 #Create a new user with a first name,  and last name
 def create_user(first_name,last_name):
-    new_user = User(
-        first_name=first_name,
-        last_name = last_name
-    )
-    #save it to the database
-    session.add(new_user)
-    session.commit() 
-    return new_user
+    if len(first_name) < 5 or len(last_name) < 5:
+        print("name must be 5 or more characters")
+    else:
+        new_user = User(
+            first_name=first_name,
+            last_name = last_name
+        )
+        #save it to the database
+        session.add(new_user)
+        session.commit() 
+        return new_user
     
 #Retrieve a user's information by providing their user ID.
 def get_user(id):
@@ -89,5 +92,3 @@ def get_gun_reviews(gun_id):
     for review in reviews:
         collection.append(review.review_text)
     return collection
-
-print(get_gun_reviews(8))
