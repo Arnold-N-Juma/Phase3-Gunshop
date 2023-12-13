@@ -1,5 +1,5 @@
+from config import *
 from models import *
-
 
 #Create a new user with a first name,  and last name
 def add_user(first_name,last_name):
