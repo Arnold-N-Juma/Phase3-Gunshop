@@ -2,7 +2,7 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy import ForeignKey, Table, Column, Integer, String
-from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy.orm import declarative_base
 
 # Create a base class for declarative models
