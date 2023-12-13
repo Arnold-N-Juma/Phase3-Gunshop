@@ -39,16 +39,21 @@ def delete_user(id):
         session.commit()
 
 #Retrieve all gun reviews related to a specific user by providing their user ID.
-def get_gun_reviews(user_id):
+def get_gun_user_reviews(user_id):
     collection = []
     gun_reviews = session.query(Review).filter(Review.user_id == user_id).all()
     for review in gun_reviews:
-        collection.append(f'Gun ID:{review.gun_id} got this review: "{review.review_text}".')
+        collection.append(f'Gun ID:{review.gun_id}, Gun review: "{review.review_text}".')
     return collection
 
 # Fetch all users along with their associated gun reviews.
 def fetch_all_users_with_gun_reviews():
-    return session.query(User).options(joinedload(User.reviews)).all()
+    users_with_reviews = (
+        session.query(User)
+        .options(joinedload(User.reviews).joinedload(Review.gun))
+        .all()
+    )
+    return users_with_reviews
 
 #Create a new gun review with a gun id, user ID, and review.
 def create_review(gun_id,user_id,review_text):
