@@ -1,4 +1,3 @@
-# Phase 3 Gunshop MAnagement System
 # Phase 3 Gunshop Management System
 # By Arnold Juma, Rowland Wanderi, Samwel Kimote
 # 14/12/2023
