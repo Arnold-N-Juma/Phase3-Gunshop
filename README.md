@@ -13,6 +13,9 @@ The Python Application is a Gunshop management system. The user is able to perfo
 - Run pipenv && pipenv shell to source environment variables in the terminal
 - Run Python lib/tests.py to run the project 
 
+## Testing
+ 
+- To test all our deliverables just run the tests.py folder to see all the tests for the deliverables
 # Known Bugs
 
 - The Project has no Bugs.
@@ -20,7 +23,10 @@ The Python Application is a Gunshop management system. The user is able to perfo
 # Technologies Used
 
 - Python
-- Mako
+- VS CODE
+- SQLAlchemy
+- Alembic
+- faker
 
 
 # Contact details
