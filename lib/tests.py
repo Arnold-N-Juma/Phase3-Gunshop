@@ -1,38 +1,55 @@
-from main import add_user, get_all_users, get_all_guns, get_gun_by_id, get_user_by_id, gun_user
-from main import delete_gun, delete_user, session
-from models import Gun
-# Create a new user
+from main import *
+from config import *
 
-# Read all users
-print("All Users:")
-for user in get_all_users():
-    print(f"User ID: {user.id}, First Name: {user.first_name}, Last Name: {user.last_name}")
+print("CREATING NEW USER")
 
-# Read user by ID
-user_id_to_query = 3  # Replace with the desired user ID
-user_to_query = get_user_by_id(user_id_to_query)
-if user_to_query:
-    print(f"User with ID {user_id_to_query}:")
-    print(f"User ID: {user_to_query.id}, First Name: {user_to_query.first_name}, Last Name: {user_to_query.last_name}")
+user=create_user("Jammie", "Bravo")
+print(f"User:{user.first_name}{user.last_name}")
 
-# Read all guns
-print("All Guns:")
-for gun in get_all_guns():
-    print(f"Gun ID: {gun.id}, Gun Name: {gun.gun_name}, Gun Price: {gun.gun_price}, Gun Info: {gun.gun_info}")
+print("")
+print("***** FETCHING A USER BY THIER ID *****")
+user=get_user(7)
+print(f"User:{user}")
 
-# Read gun by ID
-gun_id_to_query = 1  # Replace with the desired gun ID
-gun_to_query = get_gun_by_id(gun_id_to_query)
-if gun_to_query:
-    print(f"Gun with ID {gun_id_to_query}:")
-    print(f"Gun ID: {gun_to_query.id}, Gun Name: {gun_to_query.gun_name}, Gun Price: {gun_to_query.gun_price}, Gun Info: {gun_to_query.gun_info}")
+print("")
+print("***** UPDATING USERS BY THEIR ID *****")
+new_data={"first_name":"Keanu", "last_name":"Reeves"}
+user=update_user(7, new_data)
+print(f"Updated Name:{user.first_name} SurName:{user.last_name}")
 
-# Delete a user by ID
-user_id_to_delete = 1  # Replace with the desired user ID to delete
-delete_user(user_id_to_delete)
-print(f"Deleted user with ID {user_id_to_delete}")
+print("")
+print("***** DELETING A USER BY IS*****")
+user=delete_user(5)
+print(f"User No longer Available")
+# print(f"User:{user.first_name}") # When You try to Run this query the line outputs an error
 
-# Delete a gun by ID
-gun_id_to_delete = 1  # Replace with the desired gun ID to delete
-delete_gun(gun_id_to_delete)
-print(f"Deleted gun with ID {gun_id_to_delete}")
+print("")
+print("***** FETCHING A USER'S GUN REVIEWS BY ID *****")
+review=get_gun_user_reviews(8)
+print(f"Review:{review}")
+
+print("")
+print("***** CREATING NEW GUN REVIEWS *****")
+review=create_review(7, 11, "Shocking and Choking")
+print(f"New Gun ID:{review.gun_id}, Reviewed by User ID:{review.user_id},and the review is:{review.review_text}")
+
+print("")
+print("***** RETREIVING A GUN BY ID*****")
+gun=get_gun(6)
+print(f"Here is the:{gun}")
+
+print("")
+print("***** UPDATING GUN'S DETAILS****")
+new_data={'gun_name':"Black King", 'gun_price':750,'gun_info':"Fast killing sniper rifle"}
+new_gun=update_gun(8, new_data)
+print(f"The New gun is called the {new_gun.gun_name},the Gun's Price is {new_gun.gun_price} and it is a {new_gun.gun_info}")
+ 
+print("")
+print("***** DELETING GUN DETAILS****")
+gun=delete_gun(1)
+print("Gun data succesfully deleted")
+
+print("")
+print("***** RETREIVING A GUN'S REVIEWS****")
+reviews=get_gun_reviews(11)
+print(f"Here are the reviews:{reviews}")
